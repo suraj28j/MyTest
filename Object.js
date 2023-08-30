@@ -52,7 +52,7 @@ const obj3 = { ...obj1, ...obj2 };
 console.log(obj3);
 
 
-// Some Object Properties //
+// Some other Object Properties //
 const newUser = {
     name: "Satish",
     age: 30,
@@ -64,3 +64,20 @@ console.log(Object.keys(newUser)); // return value in arryay data type
 console.log(Object.values(newUser)); // return array data type
 //console.log(Object.entries(newUser));
 console.log(newUser.hasOwnProperty("city"));
+
+
+
+// Object de-structure //
+
+const student={
+    name:"Rakesh",
+    age:33,
+    qualification:"Diploma",
+    workingExperince:"2 Years"
+}
+
+// const {workingExperince}=student;
+// console.log(workingExperince);
+
+const {workingExperince:exp}=student;
+console.log(exp);
