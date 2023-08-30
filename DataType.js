@@ -83,7 +83,7 @@ let num9 = 4 - true;
 console.log(num9); // 3
 
 let num10 = 4 + false;
-console.log(num10);
+console.log(num10); // 4
 
 let num11 = 4 + undefined;
 console.log(num11);  // NaN
