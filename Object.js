@@ -2,11 +2,12 @@
 // (1) Constructor // (2) Literal
 
 // (1) Constructor // Singleton //
-// Object.create
+// Object.create()
 // const user = new Object() 
 
 // (2) Object Literal
 const mySym = Symbol("key1");
+
 const user = {
     name: "Suraj", // key assume as a string - "name"
     "full name": "Suraj Kumar",
@@ -69,15 +70,57 @@ console.log(newUser.hasOwnProperty("city"));
 
 // Object de-structure //
 
-const student={
-    name:"Rakesh",
-    age:33,
-    qualification:"Diploma",
-    workingExperince:"2 Years"
+const student = {
+    name: "Rakesh",
+    age: 33,
+    qualification: "Diploma",
+    workingExperince: "2 Years"
 }
 
 // const {workingExperince}=student;
 // console.log(workingExperince);
 
-const {workingExperince:exp}=student;
+const { workingExperince: exp } = student;
 console.log(exp);
+
+
+
+// Object Descripter //
+
+console.log(Math.PI);
+Math.PI = 5; // try to change the value 
+console.log(Math.PI);
+
+const mathDescripter = Object.getOwnPropertyDescriptor(Math, "PI");
+console.log(mathDescripter);
+/*
+{
+  value: 3.141592653589793,
+  writable: false,
+  enumerable: false,
+  configurable: false
+}   
+*/
+
+const mobile = {
+    model_No: "SM-Galaxy_M14",
+    price: 14000,
+    isAvailable: true
+}
+
+const mobileDes = Object.getOwnPropertyDescriptor(mobile, "model_No")
+console.log(mobileDes);
+/*
+{
+  value: 'SM-Galaxy_M14',
+  writable: true,
+  enumerable: true,
+  configurable: true
+}
+*/
+Object.defineProperty(mobile, "model_No", {
+    writable: false,
+    enumerable: false,
+})
+const mobileDesChange = Object.getOwnPropertyDescriptor(mobile, "model_No")
+console.log(mobileDesChange);
