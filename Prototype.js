@@ -78,4 +78,45 @@ Array.prototype.myArray = function () {
 // the myArray methode can access only Arrays
 
 myHeros.myArray();
-// heroPower.myArray(); // heroPower.myArray is not a function
+// heroPower.myArray(); // heroPower.myArray is not a function // Object can't access  only Array can
+
+
+
+// prototype inheritance //
+
+let obj1 = {
+    name: "Himanshu",
+    id: 101,
+    skill: function () {
+        console.log(`${this.name}'s communication skill is very nice`);
+    }
+}
+
+let obj2 = {
+    name: "Manish",
+    id: 102,
+    // __proto__: obj1
+}
+
+// obj2.__proto__ = obj1;
+
+// modern syntex
+
+Object.setPrototypeOf(obj2, obj1);
+
+obj2.skill();
+
+
+
+// string prototype inheritance //
+
+let studentName = "Suraj    "
+
+String.prototype.trueLength = function () {
+    console.log(`${this}`); // the Value  who's call
+    console.log(`True lenghth is : ${this.trim().length}`);
+}
+
+studentName.trueLength();
+
+"Anand  ".trueLength();
