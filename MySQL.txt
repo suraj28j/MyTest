@@ -1,0 +1,80 @@
+(1) Creat Database
+creat database database_name
+
+
+(2) Select or Use database
+use database_name;
+
+
+(3) Creat Table
+creat table table_name(
+column1 DataType,
+column2 DataType,
+column3 DataType,
+  ...
+  ...
+);
+
+
+(4) Insert Data in Table
+insert into table_name(column1, column2, column2, ...)
+values(value1, value2, value3, ...);
+
+
+(5) Insert Multiple Row
+insert into table_name(column1, column2, column2, ...)
+values
+(value1, value2, value3, ...),
+(value1, value2, value3, ...),
+(value1, value2, value3, ...);
+
+
+(6) Constraints
+(a) NOT NULL
+(b) CHECK()
+(c) UNIQUE
+(d) DEFAULT 'value'
+
+   Example :-  creat table table_name(
+				id int NOT NULL UNIQUE,
+				name varchar (30) NOT NULL,
+				age int NOT NULL CHECK(age>=18),
+				gender varchar(10) NOT NULL,
+				mobile varchar(15) NOT NULL UNIQUE,
+				city varchar(20) NOT NULL DEFAULT 'Banglore'
+				);
+				
+
+
+(7) Show table
+(a) select * FROM table_name; // all column
+(b) select id, name, phone from table_name // seleceted column
+(c) select id as ID, name as "Studnet Name", phone as Phone from table_name // change column name (on show time) 
+(d) select with WHERE Clause      
+    select * from table_name
+	
+    Example 1:-  where gender = "F";
+	Example 2:-  where city = "Banglore" AND age>=20
+	Example 3:-  where (city = "Banglore" OR city = "Lucknow") AND age>=20
+	Example 4:-  where NOT (city = "Banglore" OR city = "Lucknow") AND age>=20
+	
+	Example 5:-  IN / NOT IN
+				 (i) where age IN(19,21)
+				 (ii) where  city NOT IN("Delhi","Mumbai")
+				 
+	Example 6:-  BETWEEN / NOT BETWEEN
+				 (i) where  age BETWEEN 18 and 19
+				 (ii) where  age NOT BETWEEN 18 and 
+				 (iii) where  name BETWEEN "a" and "r"
+				 
+	Example 7:-  LIKE
+				 (i) where  name LIKE "s%"
+			         (ii) where  name NOT LIKE "s%"
+				 LIKE  'a%'     -   Start with "a"
+				 LIKE  '%a'     -   End with "a"
+				 LIKE  '%am%'   -   have "am" any position
+				 LIKE  'a%m'    -   Start with "a" and end with "m"
+				 LIKE  '_a%'    -   "a" in the second position
+				 LIKE  '__a%'   -   "a" in the third position
+				 LIKE  '_oy'    -   "o" in the second position and "y" in the third position
+
