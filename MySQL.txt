@@ -59,7 +59,7 @@ values
 	Example 4:-  where NOT (city = "Banglore" OR city = "Lucknow") AND age>=20
 	
 	Example 5:-  IN / NOT IN
-				 (i) where age IN(19,21)
+				 (i) where age IN(19,21) // age = 19, age = 21 only 
 				 (ii) where  city NOT IN("Delhi","Mumbai")
 				 
 	Example 6:-  BETWEEN / NOT BETWEEN
