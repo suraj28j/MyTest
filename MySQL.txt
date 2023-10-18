@@ -34,7 +34,7 @@
 	(b) CHECK()
 	(c) UNIQUE
 	(d) DEFAULT 'value'
-	(e)	PRIMARY KEY (UNIQUE but NULL and only for one column) 
+	(e)	PRIMARY KEY (UNIQUE but NOT NULL and only for one column) 
 	(f)	FOREIGN KEY ( A FOREIGN KEY is a key used to link two table together)
 					( A FOREIGN KEY in one table used to point PRIMARY key in another table)
 
@@ -55,7 +55,7 @@
 					city varchar(20) NOT NULL,
 					PRIMARY KEY (id)
 					);
-		Example 3:- (..for PRIMARY KEY)
+		Example 3:- (..for PRIMARY KEY) when we alrady creat a table
 					ALTER TABLE table_name
 					ADD PRIMARY KEY (id);
 
@@ -115,14 +115,24 @@
 					(iv) where gender = "F"  LIMIT 3, 5; // first digit is offset number
 				  
 	(e) Select Data with ORDER by ASC | DESC
-		Example 1:-  ORDER by name ASC
-		Example 2:-  ORDER by name DESC
-		Example 3:-  where gender = 'F' // condition
+		Example 1:-  Select * from table_name
+					 ORDER by name ASC
+					 
+		Example 2:-  Select * from table_name
+		             ORDER by name DESC
+						
+		Example 3:-  Select * from table_name
+					 where gender = 'F' // condition
 					 ORDER by age	// by default ascending order
+					 
 		Example 4:-  ORDER by name, city;
+		
+		
+	(f) Select Data from DISTINCT (show data without duplicacy)
+		Example :- select DISTINCT column_name from table_name
 
 	
-	(f) Select Data with AGGREGATE function
+	(g) Select Data with AGGREGATE function
 		Example 1:- select COUNT(column_name) from table_name // also COUNT(*)
 		Example 2:- select MAX(column_name) from table_name
 		Example 3:- select MIN(column_name) from table_name
@@ -130,18 +140,14 @@
 		Example 5:- select AVG(column_name) from table_name
 		Example 6:- select COUNT(DISTINCT column_name) from table_name
 		Example 7:- select min(mark), name, city from table_name
-	
-	
-(8) Select Data from DISTINCT
-		Example :- select DISTINCT column_name from table_name	
 
 
-(9) Update table data
+(8) Update table data
 		Example :-  UPDATE table_name
 					SET age = 22
 					where id = 3;
 					
-(10) Commit and Rollback 
+(9) Commit and Rollback 
 				    Note :- it work only Insert, Update and Delete  Commands
 		Example :-  select * from table_name; 
 		
@@ -154,7 +160,7 @@
 					rollback; // excuite the statement under the keybord cursor
 
 
-(11) Delete table data 
+(10) Delete table data 
 		Example 1:- delete from table_name
 					where id = 15;
 		Example 2:- select * from table_name;
@@ -167,7 +173,7 @@
 					rollback; // excuite the statement under the keybord cursor
 					
 					
-(12) Type of JOINS
+(11) Type of JOINS
 	(a) INNER JOIN
 		Syntex:- Select * FROM 
 				 table_1 INNER JOIN table_2
@@ -190,17 +196,143 @@
 				 ON table_1.column_name = table_2.column_name;
 	
 	
-	(d) CROSS JOIN
+	(d) CROSS JOIN // No PRIMARY KEY and FOREIGN KEY needed
 		Syntex:- Select * FROM 
 				 table_1 CROSS JOIN table_2;
 				 
-	(e) Multiple Tables JOIN
+	(a) Multiple Table JOIN
 		Syntex:- Select * FROM 
 				 table_1 
 				 INNER JOIN table_2
 				 ON table_1.column_name = table_2.column_name;
 				 INNER JOIN table_3
 				 ON table_1.column_name = table_3.column_name;
+				 
+				 
+(12) Group By and Having clause
+	Example 1:- (for 1 table)
+				select column_name, count(column_name) from table_name
+				group by column_name
 	
+	Example 2:- (for 2 table)
+				select table_2.column_name, count(table_1.column_name) 
+				from table_1 inner join table_2
+				on table_1.column_name(FOREIGN KEY) = table_2.column_name(PRIMARY KEY)
+				group by column_name
+	
+	Example 3:- (for 2 table)
+				select table_2.column_name, count(table_1.column_name) as Total
+				from table_1 inner join table_2
+				on table_1.column_name(FOREIGN KEY) = table_2.column_name(PRIMARY KEY)
+				WHERE condition
+				group by column_name
+				ORDER By count(table_1.column_name)
+				
+	Example 4:- (Group By and Having)
+				select table_2.column_name, count(table_1.column_name) as Total
+				from table_1 inner join table_2
+				on table_1.column_name(FOREIGN KEY) = table_2.column_name(PRIMARY KEY)
+				group by column_name
+				Having count(table_1.column_name)>2
 		
 					
+					
+(13) SubQuery (Nested Query)
+	Example 1: select name from studentDeatils
+				where city = (select City_id(PRIMARY Key) from CityTable where city = "Kanpur");
+				// where city IN (select CityColumn from CityTable where city IN ("Kanpur", "Varanasi")) //
+				
+	Example 2:  (SubQuery with Exists and Not Exists)
+				select name from studentDeatils
+				where Exists (select CityColumn from CityTable where city IN ("Kanpur"))
+				
+				
+				
+(14) Union or Union All
+	Syntex :-  	select columns from table_1
+				union/union all (duplicacy not allow in union)
+				select columns from table_2
+				
+(15) If and Case  Clause
+	Syntex :-  	IF Clause (only for two condition)
+				select column1, column2,
+				if(condition, "TRUE Result", "FALSE Result") as alias_name
+				from table_name;
+				
+	Syntex :-  	Case Clause (for Multiple condition)
+				select column1, column2,
+				CASE
+					WHEN condition1 THEN "result1"
+					WHEN condition2 THEN "result2"
+					WHEN condition3 THEN "result3"
+					WHEN condition4 THEN "result4"
+					ELSE  "alias_name"
+				END alias_name
+				from table_name;
+				
+				
+				
+(16) ALTER
+	(i) Add Column in Table
+	(ii) Change DataType of Column
+	(iii) Change Column Name
+	(iv) Adding Constraints in Table
+	(v) Changing Column Position
+	(vi) Delete Column
+	(vii) Renaming Tables
+	
+	Add Column 
+		Syntex :- ALTER Table table_name
+				  ADD column_name dataType;
+	
+	Modify Column 
+		Syntex :- ALTER Table table_name
+				  Modify column_name dataType;
+				  
+	Delete Column 
+		Syntex :- ALTER Table table_name
+				  Drop Column column_name dataType;
+				  
+	Rename Column 
+		Syntex :- ALTER Table table_name
+				  Change column_name  New_Column_Name  dataType;
+				  
+	Rename Table 
+		Syntex :- ALTER Table table_name
+				  Rename  New_Table_name  dataType;
+				  
+				  
+				  
+				  
+(17) Drop and Truncate
+		Syntex :- Truncate table table_name
+				 (Table All Data Deleted)
+				 
+		Syntex :- Drop table table_name
+				 (Table Deleted)
+				
+			
+			
+(18) View
+		Example :- Creat View View_Name
+				   AS		
+				   Select Columns from 
+				   table_1 inner join table_2
+				   ON table_1.(FOREIGN KEY) = table_2.(PRIMARY KEY)
+				   
+		Example :- ALTER View View_Name
+				   AS
+				  (changeing)
+				   Select Columns from 
+				   table_1 inner join table_2
+				   ON table_1.(FOREIGN KEY) = table_2.(PRIMARY KEY)
+				   
+				   
+(19) Index Command
+			(not use in PRIMARY Key and UNIQUE column)
+		syntex :- Creat Index index_name
+				  on table_name(column1, column2, column3, ...);
+				  
+		syntex :- Drop Index index_name
+				  on table_name;
+				   
