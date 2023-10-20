@@ -253,6 +253,8 @@
 				union/union all (duplicacy not allow in union)
 				select columns from table_2
 				
+				
+				
 (15) If and Case  Clause
 	Syntex :-  	IF Clause (only for two condition)
 				select column1, column2,
@@ -271,6 +273,7 @@
 				from table_name;
 				
 				
+
 				
 (16) ALTER
 	(i) Add Column in Table
@@ -284,10 +287,21 @@
 	Add Column 
 		Syntex :- ALTER Table table_name
 				  ADD column_name dataType;
+				  
+	Add Constraints & Set PRIMARY Key  
+		Syntex :- ALTER Table table_name
+				  ADD UNIQUE(column_name);
+				  or
+				  ADD PRIMARY KEY(column_name);
 	
 	Modify Column 
 		Syntex :- ALTER Table table_name
 				  Modify column_name dataType;
+				  
+	Ordering Column 
+		Syntex :- ALTER Table table_name
+				  Modify column_name dataType
+				  after Column_Name;
 				  
 	Delete Column 
 		Syntex :- ALTER Table table_name
@@ -299,14 +313,14 @@
 				  
 	Rename Table 
 		Syntex :- ALTER Table table_name
-				  Rename  New_Table_name  dataType;
+				  Rename  New_Table_name 
 				  
 				  
 				  
 				  
 (17) Drop and Truncate
 		Syntex :- Truncate table table_name
-				 (Table All Data Deleted)
+				 (Table All Data Deleted but Table remain)
 				 
 		Syntex :- Drop table table_name
 				 (Table Deleted)
@@ -327,7 +341,16 @@
 				   table_1 inner join table_2
 				   ON table_1.(FOREIGN KEY) = table_2.(PRIMARY KEY)
 				   
+		Example :- (renaming view)
+				    rename table oldViewName
+					to newViewname
+					
+		Example :- (delete view)
+				    drop view view_name
+					
 				   
+		
+		
 (19) Index Command
 			(not use in PRIMARY Key and UNIQUE column)
 		syntex :- Creat Index index_name
