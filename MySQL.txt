@@ -359,3 +359,35 @@
 		syntex :- Drop Index index_name
 				  on table_name;
 				   
+
+
+
+// Database connection with NodeJS //
+
+(npm i mysql2)
+
+
+const mysql = require("mysql2");
+const con = mysql.createConnection({
+    host : "localhost",
+    user : "root",
+    password : "root",
+    database : "student",
+})
+
+con.connect((err)=>{
+    if(err){
+        console.log("Error",err);
+    }else{
+        console.log("Connected");
+    }
+})
+
+con.query("select * from clg ",(err,Result)=>{
+    if(err){
+        console.log("Error on Database connection",err);
+    }
+    console.log("Result",Result);
+});
+
+con.end();
