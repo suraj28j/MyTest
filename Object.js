@@ -40,7 +40,9 @@ console.log(user.welcome); // pass the function referance not excute
 console.log(user.welcome()); // function excute
 user.welcome();
 
-
+User.welcome2 = function(){
+    console.log("Welcome JS User "+this.name); // this referance to that Object 
+}
 
 // Object Merge or assign
 
