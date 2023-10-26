@@ -3,7 +3,7 @@
 //alert( 3 + 3) // bcoz we are using node JS not Browser
 
 
-// ---Primitive Data Type--- // // 
+// ---Primitive Data Type--- // //  (Memory -> Stack)
 let name = "suraj"
 let lname = 'kumar'
 let age = 33  // 2 to power of 53
@@ -21,7 +21,7 @@ console.log(typeof (symbol1)); //  symbol
 //Note - Primitive data types can store only a single value. To store multiple and complex values, non-primitive data types are used//
 
 
-// // ---Non Primitive Data Type--- // //
+// // ---Non Primitive Data Type--- // //  (Memory -> Heap)
 // (1) Object
 // (2) Array
 
