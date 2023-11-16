@@ -51,3 +51,45 @@ console.log(c2);  // Throws an error
 console.log(v3); // Output is 100
 console.log(l3); // Throws an error
 console.log(c3); // Throws an error
+
+
+
+
+
+
+
+
+
+
+// Hoisting //
+
+// Hoisting is the default behaviour of javascript where all the variable and function declarations are moved on top //
+
+// Example 1
+
+num1 = 28; 
+console.log(num1);// outputs 28 even when the variable is declared after it is initialized	
+var num1;
+
+
+
+// Example 2
+welcome();
+
+function welcome(){
+    console.log("Hosting is JavaScript");
+}
+
+
+
+// Temporal Dead Zone //
+
+// Temporal Dead Zone is a behaviour that occurs with variables declared using let and const keywords. 
+// It is a behaviour where we try to access a variable before it is initialized. Examples of temporal dead zone 
+
+// Example 
+
+num2 = 29; // Cannot access 'num2' before initialization
+console.log(num2);	
+let num2; 
+// same as const 
