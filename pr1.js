@@ -31,7 +31,7 @@ userfun();
 
 
 
-// Pattern Matching //
+// Regular Expresion // 
 let pattern = /raj/i;
 let string = "Suraj";
 console.log(pattern.exec(string));
